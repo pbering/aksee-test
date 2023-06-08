@@ -1,0 +1,58 @@
+{
+  "SchemaVersion": "1.6",
+  "Version": "1.0",
+  "DeploymentType": "SingleMachineCluster",
+  "Init": {
+    "ServiceIPRangeSize": 10
+  },
+  "Arc": {
+    "ClusterName": null,
+    "Location": null,
+    "ResourceGroupName": null,
+    "SubscriptionId": null,
+    "TenantId": null,
+    "ClientId": null,
+    "ClientSecret": null
+  },
+  "Network": {
+    "NetworkPlugin": "calico",
+    "InternetDisabled": false,
+    "Proxy": {
+      "Http": null,
+      "Https": null,
+      "No": "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc"
+    }
+  },
+  "User": {
+    "AcceptEula": null,
+    "AcceptOptionalTelemetry": false,
+    "VolumeLicense": {
+      "EnrollmentID": null,
+      "PartNumber": null
+    }
+  },
+  "Machines": [
+    {
+      "LinuxNode": {
+        "CpuCount": 4,
+        "MemoryInMB": 4096,
+        "DataSizeInGB": 30,
+        "TimeoutSeconds": 300,
+        "TpmPassthrough": false,
+        "SecondaryNetworks": [
+          {
+            "VMSwitchName": null,
+            "Ip4Address": null,
+            "Ip4GatewayAddress": null,
+            "Ip4PrefixLength": null
+          }
+        ]
+      },
+      "WindowsNode": {
+        "CpuCount": 4,
+        "MemoryInMB": 16384,
+        "TimeoutSeconds": 900
+      }
+    }
+  ]
+}
