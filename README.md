@@ -57,7 +57,7 @@ You now have a running Kuberneters single machine cluster with a Linux node and 
 ## Deploy Sitecore XM
 
 1. Create a new project directory: `mkdir .\sitecore-xm;cd .\sitecore-xm`
-1. Download workload: `curl.exe https://raw.githubusercontent.com/pbering/aksee-test/tree/main/test/xm/kustomization.yaml -o .\kustomization.yaml`
+1. Download workload: `curl.exe https://raw.githubusercontent.com/pbering/aksee-test/main/test/xm/kustomization.yaml -o .\kustomization.yaml`
 1. Generate certificates (download mkcert <https://github.com/FiloSottile/mkcert/releases>):
 
     ```powershell
