@@ -25,9 +25,6 @@ generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  # - name: sitecore-license
-  #   files:
-  #     - sitecore-license.txt
   - name: sitecore-admin
     literals:
       - sitecore-adminpassword.txt=b
@@ -70,16 +67,6 @@ secretGenerator:
   - name: sitecore-log-level
     literals:
       - sitecore-log-level-value.txt=INFO
-  # - name: cm-tls
-  #   files:
-  #     - tls.key=cm-tls.key
-  #     - tls.crt=cm-tls.crt
-  #   type: kubernetes.io/tls
-  # - name: id-tls
-  #   files:
-  #     - tls.key=id-tls.key
-  #     - tls.crt=id-tls.crt
-  #   type: kubernetes.io/tls
 
 configMapGenerator:
   - name: sitecore-hostnames
