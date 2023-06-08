@@ -1,0 +1,112 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+  - name: mssql
+    newName: mcr.microsoft.com/mssql/server
+    newTag: 2017-CU21-ubuntu-16.04
+  - name: solr
+    newName: solr
+    newTag: "8.11.2"
+  - name: sitecore-xm1-mssql-init
+    newName: scr.sitecore.com/sxp/sitecore-xm1-mssql-init
+    newTag: 10.3-ltsc2019
+  - name: sitecore-xm1-solr-init
+    newName: scr.sitecore.com/sxp/sitecore-xm1-solr-init
+    newTag: 10.3-ltsc2019
+  - name: sitecore-xm1-id
+    newName: scr.sitecore.com/sxp/sitecore-id7
+    newTag: 10.3-ltsc2019
+  - name: sitecore-xm1-cm
+    newName: scr.sitecore.com/sxp/sitecore-xm1-cm
+    newTag: 10.3-ltsc2019
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  # - name: sitecore-license
+  #   files:
+  #     - sitecore-license.txt
+  - name: sitecore-admin
+    literals:
+      - sitecore-adminpassword.txt=b
+  - name: sitecore-database
+    literals:
+      - sitecore-databaseusername.txt=sa
+      - sitecore-databasepassword.txt=sPTcN5akBuhaAfJPQAZXC7FAw5DhzR
+      - sitecore-databaseservername.txt=mssql
+      - sitecore-database-elastic-pool-name.txt=
+      - sitecore-master-database-username.txt=masteruser
+      - sitecore-master-database-password.txt=gPezKrYDxpoduBjY47yah5nkyRsYqK
+      - sitecore-core-database-username.txt=coreuser
+      - sitecore-core-database-password.txt=LkMByKdmnLfZxMRXvuegZ64Vp9yc3e
+      - sitecore-web-database-username.txt=webuser
+      - sitecore-web-database-password.txt=fRRvc3AAcSsLUGegPJtVSuafqP5b2c
+      - sitecore-forms-database-username.txt=formsuser
+      - sitecore-forms-database-password.txt=2kibPJMimaXJzXiF55HTewk9eLwNXU
+      - sitecore-databaseprefix.txt=Sitecore
+      - sitecore-custom-database-prefix-update-from.txt=
+  - name: sitecore-solr
+    literals:
+      - sitecore-solr-connection-string.txt=http://solr:8983/solr;solrCloud=true
+      - sitecore-solr-core-prefix-name.txt=sitecore
+  - name: sitecore-identity
+    literals:
+      - sitecore-identitysecret.txt=NPyXMyvewAxwQ4r8bJU8FqmhHEt9o8
+  - name: sitecore-identitycertificate
+    literals:
+      - sitecore-identitycertificate.txt=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
+      - sitecore-identitycertificatepassword.txt=qkO7BR8ucJ22
+  - name: sitecore-telerik
+    literals:
+      - sitecore-telerikencryptionkey.txt=KnvU7RTrCm2ZWjgNaC5pgfcQ5K9mH6
+  - name: sitecore-protect-media-requests
+    literals:
+      - sitecore-media-request-protection-shared-secret.txt=V8eJZDpmBsa3fkRDu8WnXD3XwyXTeR
+  - name: sitecore-graphql
+    literals:
+      - sitecore-graphql-uploadmedia_encryptionkey.txt=owYQD7rSuhhoLPBadg3QNYD2benegu
+  - name: sitecore-log-level
+    literals:
+      - sitecore-log-level-value.txt=INFO
+  # - name: cm-tls
+  #   files:
+  #     - tls.key=cm-tls.key
+  #     - tls.crt=cm-tls.crt
+  #   type: kubernetes.io/tls
+  # - name: id-tls
+  #   files:
+  #     - tls.key=id-tls.key
+  #     - tls.crt=id-tls.crt
+  #   type: kubernetes.io/tls
+
+configMapGenerator:
+  - name: sitecore-hostnames
+    literals:
+      - cm-hostname=cm.aksee.local
+      - id-hostname=id.aksee.local
+
+vars:
+  - name: cm-hostname
+    objref:
+      kind: ConfigMap
+      name: sitecore-hostnames
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.cm-hostname
+  - name: id-hostname
+    objref:
+      kind: ConfigMap
+      name: sitecore-hostnames
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.id-hostname
+
+resources:
+  - logs.yaml
+  - data.yaml
+  - mssql.yaml
+  - solr.yaml
+  - cm.yaml
+  - id.yaml
