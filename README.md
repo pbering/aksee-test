@@ -66,8 +66,7 @@ You now have a running Kuberneters single machine cluster with a Linux node and 
     mkcert -cert-file ".\id-tls.crt" -key-file ".\id-tls.key" "id.aksee.local"
     ```
 
-1. Prepare HOST file:
-    - Run `kubectl get services -n ingress-nginx ingress-nginx-controller` and use the external IP to add two new entries:
+1. Prepare HOST file, run `kubectl get services -n ingress-nginx ingress-nginx-controller` and use the external IP to add two new entries:
       - `192.168.1.4  id.aksee.local`
       - `192.168.1.4  cm.aksee.local`
 
@@ -78,7 +77,7 @@ You now have a running Kuberneters single machine cluster with a Linux node and 
    ConvertTo-CompressedBase64String -Path "C:\License\license.xml" | Out-File -Encoding ascii -NoNewline -FilePath .\sitecore-license.txt
    ```
 
-1. Then:
+1. Then deploy the workload:
 
     ```powershell
     kubectl create namespace xm
