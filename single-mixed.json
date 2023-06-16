@@ -24,7 +24,7 @@
     }
   },
   "User": {
-    "AcceptEula": null,
+    "AcceptEula": true,
     "AcceptOptionalTelemetry": false,
     "VolumeLicense": {
       "EnrollmentID": null,

@@ -14,13 +14,13 @@ Expand-Archive -Path "~\Downloads\windows-node.zip" -DestinationPath "~\Download
 Then start installation with:
 
 ```powershell
-msiexec.exe /i (Get-Item "~\Downloads\k8s.msi").FullName ADDLOCAL=CoreFeature,WindowsNodeFeature /passive
+msiexec.exe /i (Get-Item "~\Downloads\k8s.msi").FullName /passiv ADDLOCAL=CoreFeature,WindowsNodeFeature
 ```
 
 ...or if you want the VM disks on another drive (see [docs](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-setup-machine#install-aks-edge-essentials) for all arguments):
 
 ```powershell
-msiexec.exe /i (Get-Item "~\Downloads\k8s.msi").FullName ADDLOCAL=CoreFeature,WindowsNodeFeature VHDXDIR=D:\Data\AksEdge /passiv`
+msiexec.exe /i (Get-Item "~\Downloads\k8s.msi").FullName /passiv ADDLOCAL=CoreFeature,WindowsNodeFeature VHDXDIR=D:\Data\AksEdge
 ```
 
 Now verify you the installation was successful:
@@ -52,7 +52,7 @@ You now have a running Kuberneters single machine cluster with a Linux node and 
     - Verify that nginx got an external IP address: `kubectl get services -n ingress-nginx ingress-nginx-controller`
 1. Install local path provisioner for Linux container persistence:
     - Run: `kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/storage/local-path-provisioner/local-path-storage.yaml`
-    - For details, check the [docs](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-use-storage-local-path) for details...
+    - For details, see [docs](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-use-storage-local-path)...
 
 ## Deploy Sitecore XM
 
